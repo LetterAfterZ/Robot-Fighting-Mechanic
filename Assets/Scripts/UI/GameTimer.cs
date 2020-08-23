@@ -12,8 +12,13 @@ public class GameTimer : MonoBehaviour
 
     [SerializeField] RectTransform _clockhand = null;
     [SerializeField] Image _clockface = null;
+    [SerializeField] Sprite _clockBattle = null;
+    [SerializeField] Sprite _clockRepair = null;
+
 
     [SerializeField] private GameEvent _newFightRound = null;
+
+    
 
     private void Start() {
         StartNextMode();
@@ -22,14 +27,14 @@ public class GameTimer : MonoBehaviour
     void StartNextMode(){
         if (!isFight){
             isFight = true;
-            _clockface.color = Color.red;    
+            _clockface.sprite = _clockBattle;    
             currentCountDown = _fightTime;
             // fire off new round event
             _newFightRound.Raise();
             
         }else{
             isFight = false;     
-            _clockface.color = Color.yellow;    
+            _clockface.sprite = _clockRepair;    
             currentCountDown = _repairTime;            
         }
         StartCoroutine(CountdownTime());
