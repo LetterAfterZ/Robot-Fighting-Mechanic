@@ -17,6 +17,9 @@ public class Minigame : MonoBehaviour
 
 
     protected virtual void Start() {
+        //set main camera
+        GetComponent<Canvas>().worldCamera = Camera.main;
+
         _minigameStartedEvent.Raise();
         //get initial UI position
         _defaultPos = _parent.position;

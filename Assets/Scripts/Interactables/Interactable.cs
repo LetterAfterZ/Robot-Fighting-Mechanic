@@ -8,25 +8,29 @@ public class Interactable : MonoBehaviour
     [SerializeField] private bool _requireMinigame = false;
     [SerializeField] private Minigame _minigame = null;
     private bool _IsActiveInteractable = false;
+        
 
     private void Awake() {
         _successOutcome = GetComponent<ISuccessOutcome>();
         _triggerCondition = GetComponent<ITriggerCondition>();
+
+        //get player
+        //_player = GameObject.FindWithTag("Player").GetComponent<Transform>();
     }
 
     // This version lets you walk over trigger (need to tick Is Trigger on Collider2D)
     void OnTriggerEnter2D (Collider2D col){     
         if (col.gameObject.tag == "Player")
-            LaunchMinigame();
+            LaunchMinigame(col.gameObject.GetComponent<Transform>().position);
     }
     
     // This version won't let you move into the object (don't choose isTrigger)
     void OnCollisionEnter2D(Collision2D col){                  
        if (col.gameObject.tag == "Player")
-            LaunchMinigame();
+            LaunchMinigame(col.gameObject.GetComponent<Transform>().position);
     }
 
-    void LaunchMinigame(){
+    void LaunchMinigame(Vector2 spawnPosition){
         //check Trigger condition is met
         if (_triggerCondition != null && _triggerCondition.TriggerConditionCheck()){
             if (!_requireMinigame){ //bypass minigame if not set to required
@@ -40,7 +44,7 @@ public class Interactable : MonoBehaviour
             //if player enters the shelf - trigger the minigame, if one doesn't already exist 
             if (minigameExists == null){
                 _IsActiveInteractable = true;
-                Instantiate(_minigame, new Vector2(0,0), Quaternion.identity);
+                Instantiate(_minigame, spawnPosition, Quaternion.identity);
             }
         }        
     }

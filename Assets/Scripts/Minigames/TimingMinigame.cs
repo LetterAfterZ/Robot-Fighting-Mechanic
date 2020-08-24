@@ -7,6 +7,7 @@ public class TimingMinigame : Minigame
     [SerializeField] private RectTransform _target = null;
     [SerializeField] private RectTransform _marker = null;
     [SerializeField] private float _markerMoveSpeed = 500f;
+    [SerializeField] private float _edgeOffset = 20f;    
 
     private Vector2 _leftLimit;
     private Vector2 _rightLimit;
@@ -16,10 +17,10 @@ public class TimingMinigame : Minigame
 
     protected override void Start() {
         base.Start();
-
+        
         //get length of the bar for left right limits
-        _leftLimit = new Vector2(_background.offsetMin.x, _marker.anchoredPosition.y);
-        _rightLimit = new Vector2(_background.offsetMax.x, _marker.anchoredPosition.y);
+        _leftLimit = new Vector2(_background.offsetMin.x + _edgeOffset, _marker.anchoredPosition.y);
+        _rightLimit = new Vector2(_background.offsetMax.x - _edgeOffset, _marker.anchoredPosition.y);
 
         //set initial move target to the left
         _moveTarget = _leftLimit;
