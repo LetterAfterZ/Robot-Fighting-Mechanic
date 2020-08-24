@@ -15,5 +15,6 @@ MonoBehaviour:
   boxID: 1
   boxName: Green box
   boxColor: {r: 0.22352941, g: 0.6745098, b: 0.3372549, a: 1}
+  boxSR: {fileID: 0}
   boxRequiredParts: []
   boxAddedParts: []

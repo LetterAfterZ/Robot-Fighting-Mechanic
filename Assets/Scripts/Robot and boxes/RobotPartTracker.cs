@@ -17,7 +17,7 @@ public class RobotPartTracker : MonoBehaviour
     private enum BoxColor {Red,Blue,Green}
     private enum ItemPart {Battery,CircuitBoard,Gear}
 
-    private void Start() {
+    private void Awake() {
         //empty boxes at the start
         EmptyBoxes();
     }
@@ -26,10 +26,10 @@ public class RobotPartTracker : MonoBehaviour
         BoxColor box = Utilities.GetRandomEnum<BoxColor>();
         ItemPart itemPart = Utilities.GetRandomEnum<ItemPart>();
 
-        StartCoroutine(DamagePart(itemPart, box));        
+        DamagePart(itemPart, box);    
     }
 
-    private IEnumerator DamagePart(ItemPart itemPart, BoxColor box){       
+    private void DamagePart(ItemPart itemPart, BoxColor box){       
         
         Item item;
 
@@ -67,15 +67,11 @@ public class RobotPartTracker : MonoBehaviour
                 break;
         }
         
-        //triggler bubble (if not running)
-        bool bubbleNotActive = false;
+        bool success = _bubble.TriggerBubble(boxContainer.boxColor, item.itemIcon);
 
-        while (!bubbleNotActive){ // keep trying to trigger next part once the spot becomes available.
-            bubbleNotActive = _bubble.TriggerBubble(boxContainer.boxColor, item.itemIcon);
-            yield return null;
+        if(success){             
+            boxContainer.AddRequiredItemtoBox(item);
         }
-
-        boxContainer.AddRequiredItemtoBox(item);
     }
 
     private void EmptyBoxes(){

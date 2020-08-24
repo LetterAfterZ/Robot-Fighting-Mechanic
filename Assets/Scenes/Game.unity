@@ -1449,8 +1449,13 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 3cad30dc8f9a5bb4c9b88fdb1181e452, type: 2}
   - {fileID: 11400000, guid: ad20563c5156276429ec238b005eb0a7, type: 2}
   - {fileID: 11400000, guid: 354ebfc0964e7ca4b8d6ddc8ada116d1, type: 2}
+  _blueBoxSR: {fileID: 1072011311}
+  _redBoxSR: {fileID: 1255380951}
+  _greenBoxSR: {fileID: 2125396494}
   _robotHealth: {fileID: 1005184888}
   _robotLaser: {fileID: 1005184889}
+  _laserChargeRate: 5
+  _partDamageRate: 5
 --- !u!4 &688614000 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4976604988147355823, guid: 612efac2c1eb9074082247c8f57105d0,
@@ -1835,6 +1840,12 @@ MonoBehaviour:
   _currPower: 0
   _powerbar: {fileID: 1940261295}
   _laserCharged: {fileID: 11400000, guid: 5716f8dd1d2fea54c9355d4c8fc3effb, type: 2}
+--- !u!212 &1072011311 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 3907479333656512835, guid: 795c40815fe67f44086489f5c4a691e6,
+    type: 3}
+  m_PrefabInstance: {fileID: 444718197}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1100866299
 GameObject:
   m_ObjectHideFlags: 0
@@ -2124,6 +2135,12 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!212 &1255380951 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 3907479333656512835, guid: 795c40815fe67f44086489f5c4a691e6,
+    type: 3}
+  m_PrefabInstance: {fileID: 439955961}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1324651587
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3337,6 +3354,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _slider: {fileID: 1972649163}
+--- !u!212 &2125396494 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 3907479333656512835, guid: 795c40815fe67f44086489f5c4a691e6,
+    type: 3}
+  m_PrefabInstance: {fileID: 1525237499}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4976604988533816031
 PrefabInstance:
   m_ObjectHideFlags: 0

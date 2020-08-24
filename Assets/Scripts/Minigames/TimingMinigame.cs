@@ -22,8 +22,6 @@ public class TimingMinigame : Minigame
         _leftLimit = new Vector2(_background.offsetMin.x + _edgeOffset, _marker.anchoredPosition.y);
         _rightLimit = new Vector2(_background.offsetMax.x - _edgeOffset, _marker.anchoredPosition.y);
 
-        Debug.Log(_leftLimit);
-
         //set initial move target to the left
         _moveTarget = _leftLimit;
 
