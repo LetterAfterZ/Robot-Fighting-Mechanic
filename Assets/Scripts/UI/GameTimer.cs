@@ -17,8 +17,9 @@ public class GameTimer : MonoBehaviour
 
 
     [SerializeField] private GameEvent _newFightRound = null;
+    [SerializeField] private GameEvent _newRepairRound = null;
 
-    
+    [SerializeField] private EvalRepairs _evalRepairs = null;
 
     private void Start() {
         StartNextMode();
@@ -26,6 +27,8 @@ public class GameTimer : MonoBehaviour
 
     void StartNextMode(){
         if (!isFight){
+            //trigger eval
+            _evalRepairs.EvaluateRepairs();
             isFight = true;
             _clockface.sprite = _clockBattle;    
             currentCountDown = _fightTime;
@@ -35,7 +38,7 @@ public class GameTimer : MonoBehaviour
         }else{
             isFight = false;     
             _clockface.sprite = _clockRepair;    
-            currentCountDown = _repairTime;            
+            currentCountDown = _repairTime;         
         }
         StartCoroutine(CountdownTime());
     }

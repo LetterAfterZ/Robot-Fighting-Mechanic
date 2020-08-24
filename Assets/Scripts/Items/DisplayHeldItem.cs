@@ -1,20 +1,19 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class DisplayHeldItem : MonoBehaviour
 {
-    [SerializeField] SpriteRenderer spriteRenderer = null;
-    [SerializeField] PlayerHeldItem playerHeldItem = null;
+    [SerializeField] Image _image = null;
+    [SerializeField] PlayerHeldItem _playerHeldItem = null;
 
     public void UpdateItemDisplay(){
-        bool getItem = playerHeldItem.ReturnCurrentItem(out Item item);
+        bool getItem = _playerHeldItem.ReturnCurrentItem(out Item item);
 
         if(getItem){
-            spriteRenderer.enabled = true;
-            spriteRenderer.sprite = item.itemIcon;
+            _image.enabled = true;
+            _image.sprite = item.itemIcon;
         }else{
-            spriteRenderer.enabled = false;
+            _image.enabled = false;
         }
     }
 }

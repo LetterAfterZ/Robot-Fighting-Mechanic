@@ -135,7 +135,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _requireMinigame: 1
-  _minigame: {fileID: 2205353218529348900, guid: 861e0917b3417df4f873f4afb75aaacc,
+  _minigame: {fileID: 3179317331156469016, guid: f536a7e986bc22f49ad67c9e1f7238d6,
     type: 3}
 --- !u!61 &4897334931730892161
 BoxCollider2D:

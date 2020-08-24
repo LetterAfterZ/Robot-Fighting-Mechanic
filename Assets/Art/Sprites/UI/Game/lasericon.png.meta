@@ -1,25 +1,31 @@
 fileFormatVersion: 2
-guid: 36345bd85a91880448b008af8246faeb
+guid: ce6c1e10ca287924eadb18d259e564ea
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1161201145128540330
-    second: battery
+      213: -7804224544625952848
+    second: lasericon_0
   - first:
-      213: 2130535880278150251
-    second: gear
+      213: -299726572728121436
+    second: lasericon_1
   - first:
-      213: 184950751378207249
-    second: circuit board
+      213: 1248405089965978659
+    second: lasericon_2
   - first:
-      213: -5939463070795172742
-    second: battery
+      213: -6196804385036322459
+    second: lasericon_3
   - first:
-      213: 6725019411808010661
-    second: gear
+      213: 1753559324121045114
+    second: lasericon_4
   - first:
-      213: -3917391801751258802
-    second: circuit board
+      213: 5286599974746567360
+    second: lasericon_5
+  - first:
+      213: -6963159962675157300
+    second: lasericon_6
+  - first:
+      213: -6960447506460818260
+    second: lasericon_7
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -63,7 +69,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 32
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -82,7 +88,7 @@ TextureImporter:
     maxTextureSize: 4096
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -94,7 +100,7 @@ TextureImporter:
     maxTextureSize: 4096
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -106,7 +112,7 @@ TextureImporter:
     maxTextureSize: 4096
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -117,64 +123,22 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: battery
+      name: lasericon_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 16
-        width: 16
-        height: 16
+        x: 3
+        y: 10
+        width: 27
+        height: 14
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a74f3b44ec9c29da0800000000000000
-      internalID: -5939463070795172742
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: gear
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 16
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5a14c6c3681145d50800000000000000
-      internalID: 6725019411808010661
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: circuit board
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e49b69a59e0a2a9c0800000000000000
-      internalID: -3917391801751258802
+      spriteID: 0b77f2e0023d1b390800000000000000
+      internalID: -7804224544625952848
       vertices: []
       indices: 
       edges: []
