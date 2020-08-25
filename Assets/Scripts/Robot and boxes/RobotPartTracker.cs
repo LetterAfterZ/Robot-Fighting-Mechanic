@@ -8,11 +8,11 @@ public class RobotPartTracker : MonoBehaviour
     public BoxContainer redBox;
     public BoxContainer greenBox;    
 
-    [SerializeField] private Item _itemBattery;
-    [SerializeField] private Item _itemCircuitBoard;
-    [SerializeField] private Item _itemGear;
+    [SerializeField] private Item _itemBattery = null;
+    [SerializeField] private Item _itemCircuitBoard = null;
+    [SerializeField] private Item _itemGear= null;
 
-    [SerializeField] private Bubble _bubble;
+    [SerializeField] private Bubble _bubble= null;
 
     private enum BoxColor {Red,Blue,Green}
     private enum ItemPart {Battery,CircuitBoard,Gear}

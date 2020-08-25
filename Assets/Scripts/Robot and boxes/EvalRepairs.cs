@@ -5,12 +5,12 @@ public class EvalRepairs : MonoBehaviour
 {
     public BoxContainer[] boxes;
 
-    [SerializeField] SpriteRenderer _blueBoxSR;
-    [SerializeField] SpriteRenderer _redBoxSR;
-    [SerializeField] SpriteRenderer _greenBoxSR;
+    [SerializeField] SpriteRenderer _blueBoxSR = null;
+    [SerializeField] SpriteRenderer _redBoxSR = null;
+    [SerializeField] SpriteRenderer _greenBoxSR = null;
 
-    [SerializeField] RobotHealth _robotHealth;
-    [SerializeField] RobotLaser _robotLaser; 
+    [SerializeField] RobotHealth _robotHealth = null;
+    [SerializeField] RobotLaser _robotLaser = null;
     [SerializeField] int _laserChargeRate = 5;
     [SerializeField] int _partDamageRate = 5;
 
@@ -81,7 +81,6 @@ public class EvalRepairs : MonoBehaviour
                 break;
             default:
                 break;
-                boxSR = _blueBoxSR;
         }
 
         int flashTimer = 3;        

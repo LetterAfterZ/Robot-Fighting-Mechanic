@@ -5,12 +5,12 @@ using UnityEngine;
 public class SuccessOutcomeAddPartToBox : MonoBehaviour, ISuccessOutcome
 {
     [SerializeField] private PlayerHeldItem _playerHeldItem = null;
-    [SerializeField] private BoxContainer box;
+    [SerializeField] private BoxContainer box = null;
     
-    [SerializeField] SpriteRenderer _keyPressDialog;
+    [SerializeField] SpriteRenderer _keyPressDialog = null;
 
     private bool listenForKey = false;
-    private Item _item;
+    private Item _item = null;
 
     
     public void TriggerSuccessAction()

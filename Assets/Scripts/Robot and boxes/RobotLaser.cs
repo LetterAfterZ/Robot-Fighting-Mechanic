@@ -5,8 +5,8 @@ public class RobotLaser : MonoBehaviour
     [SerializeField] private int _maxPower = 100;
     [SerializeField] private int _currPower;
 
-    [SerializeField] HealthBar _powerbar;
-    [SerializeField] GameEvent _laserCharged;
+    [SerializeField] HealthBar _powerbar = null;
+    [SerializeField] GameEvent _laserCharged = null;
 
     private void Start() {
         //set initial charge

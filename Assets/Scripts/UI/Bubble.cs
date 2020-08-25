@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Bubble : MonoBehaviour
 {
-    [SerializeField] private Transform _bubble;
-    [SerializeField] private SpriteRenderer _bubbleSR;
-    [SerializeField] private SpriteRenderer _bubbleIconSR;
+    [SerializeField] private Transform _bubble = null;
+    [SerializeField] private SpriteRenderer _bubbleSR = null;
+    [SerializeField] private SpriteRenderer _bubbleIconSR = null;
 
     [SerializeField] private float _bubbleGrowSpeed = 50f;
 

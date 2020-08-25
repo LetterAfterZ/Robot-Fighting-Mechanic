@@ -17,7 +17,7 @@ public class GameTimer : MonoBehaviour
 
 
     [SerializeField] private GameEvent _newFightRound = null;
-    [SerializeField] private GameEvent _newRepairRound = null;
+    //[SerializeField] private GameEvent _newRepairRound = null;
 
     [SerializeField] private EvalRepairs _evalRepairs = null;
 
