@@ -15,6 +15,8 @@ MonoBehaviour:
   boxID: 0
   boxName: Blue box
   boxColor: {r: 0.22352943, g: 0.35686275, b: 0.6745098, a: 1}
-  boxSR: {fileID: 0}
-  boxRequiredParts: []
+  boxRequiredParts:
+  - {fileID: 11400000, guid: 2d4df4ac860e00543ac6252dc63e93ee, type: 2}
+  - {fileID: 11400000, guid: 977739a6be165fe45841ae4277c5c15b, type: 2}
+  - {fileID: 11400000, guid: 977739a6be165fe45841ae4277c5c15b, type: 2}
   boxAddedParts: []

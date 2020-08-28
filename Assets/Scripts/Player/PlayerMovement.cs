@@ -3,20 +3,19 @@
 public class PlayerMovement : MonoBehaviour
 {
 
-    [SerializeField] private float _moveSpeed = 5f;
-    [SerializeField] private Rigidbody2D _rb2D = null;
-    [SerializeField] private SpriteRenderer _spriteRenderer = null;
-    [SerializeField] private Animator _animator = null;
+    [SerializeField] float _moveSpeed = 5f;
+    [SerializeField] Rigidbody2D _rb2D = null;
+    [SerializeField] SpriteRenderer _spriteRenderer = null;
+    [SerializeField] Animator _animator = null;
+    [SerializeField] AudioSource _audioSource = null;
+    [SerializeField] SoundRandomiser _footstepSounds = null;
 
     private Vector2 _movement;
-
     private bool _canMove = true;
-
 
     void Update() {
         if (_canMove)
             MovePlayer();
-
     }
 
     private void MovePlayer() {
@@ -31,19 +30,21 @@ public class PlayerMovement : MonoBehaviour
         //manual sprite flipping
         SetSpriteFacing();
 
+        /*
         if(Input.GetKey("space")) {
             //play attack animation
             _animator.SetBool("IsAttacking",true);
         } else {
             _animator.SetBool("IsAttacking",false);
         }
+        */
     }
 
     void FixedUpdate()
     {                
         //move towards target
         if (_canMove)
-            _rb2D.MovePosition(_rb2D.position + _movement * _moveSpeed * Time.deltaTime);        
+            _rb2D.MovePosition(_rb2D.position + _movement * _moveSpeed * Time.deltaTime); 
     }
 
     private void SetSpriteFacing() {
@@ -57,12 +58,17 @@ public class PlayerMovement : MonoBehaviour
     public void SetPlayerMovement(bool setMovement){
         if (setMovement){
             _canMove = true;
+            _animator.SetBool("IsAttacking",false);
         }else{            
             _canMove = false;
             _rb2D.MovePosition(_rb2D.position);
             _animator.SetFloat("Speed",0);
             _animator.SetBool("IsAttacking",true);
-            
         }
+    }
+
+    //footstep sounds
+    public void Step(){
+        _audioSource.PlayOneShot(_footstepSounds.ReturnRandomSound());
     }
 }

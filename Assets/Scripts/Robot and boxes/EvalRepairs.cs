@@ -8,14 +8,26 @@ public class EvalRepairs : MonoBehaviour
     [SerializeField] SpriteRenderer _blueBoxSR = null;
     [SerializeField] SpriteRenderer _redBoxSR = null;
     [SerializeField] SpriteRenderer _greenBoxSR = null;
+    [SerializeField] BoxManager _boxManager = null;
 
     [SerializeField] RobotHealth _robotHealth = null;
     [SerializeField] RobotLaser _robotLaser = null;
-    [SerializeField] int _laserChargeRate = 5;
+    [SerializeField] int _laserChargeRate = 15;
     [SerializeField] int _partDamageRate = 5;
+
+    [SerializeField] AudioSource _audioSource = null;
+    [SerializeField] AudioClip _successSound = null;
+    [SerializeField] AudioClip _failureSound = null;
+
+    static bool firstRound = true;
 
     public void EvaluateRepairs()
     {
+        if (firstRound){ //don't eval on the first round.
+            firstRound = false;
+            return;
+        }
+
         //Remove matching parts
         foreach (BoxContainer box in boxes)
         {
@@ -33,6 +45,7 @@ public class EvalRepairs : MonoBehaviour
                                 box.boxAddedParts.RemoveAt(j);
                                 //increment laser
                                 _robotLaser.ChargeLaser(_laserChargeRate);
+                                break; //exit the loop if matched
                             }
                         }
                     }
@@ -40,6 +53,7 @@ public class EvalRepairs : MonoBehaviour
             }
         }
 
+        bool allCorrect = true;
         // Apply damage for missed or extra parts
         foreach (BoxContainer box in boxes)
         {
@@ -49,13 +63,22 @@ public class EvalRepairs : MonoBehaviour
                 Debug.Log("You missed " + box.boxRequiredParts.Count + " part(s)!");
                 _robotHealth.TakeDamage(_partDamageRate * box.boxRequiredParts.Count);
                 success = false;
+                allCorrect = false;
             }
             if (box.boxAddedParts.Count > 0){
                 Debug.Log("You added " + box.boxAddedParts.Count + " unneeded part(s)!");
                 _robotHealth.TakeDamage(_partDamageRate * box.boxAddedParts.Count);
                 success = false;
-            }
+                allCorrect = false;
+            }            
             StartCoroutine(FlashBox(box, success));
+        }
+
+        //play sound based on overall results
+        if (allCorrect){
+            _audioSource.PlayOneShot(_successSound);
+        } else {
+            _audioSource.PlayOneShot(_failureSound);
         }
     }
 
@@ -82,19 +105,19 @@ public class EvalRepairs : MonoBehaviour
             default:
                 break;
         }
-
-        int flashTimer = 3;        
+        int flashTimer = 6;        
+        
         //flash the box
-        while(flashTimer > 0){
-            
+        while(flashTimer > 0){            
             boxSR.color = color;
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.2f);
             boxSR.color = Color.white;
             yield return new WaitForSeconds(0.1f);
-            flashTimer--;
+            flashTimer--;    
             yield return null;
-
-            
         }
+
+        //trigger disabling boxes
+        _boxManager.TriggerDisableBoxes();
     }
 }

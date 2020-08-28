@@ -9,7 +9,10 @@ public class Debris : MonoBehaviour
     
     [SerializeField] private SpriteRenderer _spriteRenderer = null;
     [SerializeField] private BoxCollider2D _collider = null;
+    [SerializeField] private AudioSource _audioSource = null;
     [SerializeField] private Interactable _interactable = null;
+    [SerializeField] private SoundRandomiser _impactSound = null;    
+
     [SerializeField] Effect _debrisLandEffect = null;
     
 
@@ -61,9 +64,11 @@ public class Debris : MonoBehaviour
             transform.position = Vector2.MoveTowards(transform.position, _targetLocation, 20f * Time.deltaTime);
                yield return null;
         }
-
-        //play effect when debris hits ground
+        
+        //play sound and effect when debris hits the ground
+        _audioSource.PlayOneShot(_impactSound.ReturnRandomSound());
         Instantiate(_debrisLandEffect, _targetLocation, Quaternion.identity);
+
 
         //turn on collider2D & make it match size of the sprite 
         _collider.enabled = true;
@@ -71,7 +76,11 @@ public class Debris : MonoBehaviour
         _collider.size = new Vector2(_spriteRenderer.bounds.size.x / transform.lossyScale.x,
                                      _spriteRenderer.bounds.size.y / transform.lossyScale.y);
 
-        //turn on interactable (TODO: make new success outcome - destroy self)
+        //position in Z axis
+        transform.position = new Vector3(transform.position.x, transform.position.y, -5);
+
+        //turn on interactable (with a delay to reduce player getting stuck in repeat loops
+        yield return new WaitForSeconds(0.5f);
         _interactable.enabled = true;
 
         //(todo - do I need to make a trigger check for no trigger for the interactable? - maybe trigger should be button press in range)

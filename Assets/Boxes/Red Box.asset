@@ -16,5 +16,8 @@ MonoBehaviour:
   boxName: Red Box
   boxColor: {r: 0.6745098, g: 0.22352941, b: 0.22352941, a: 1}
   boxRequiredParts:
+  - {fileID: 11400000, guid: 977739a6be165fe45841ae4277c5c15b, type: 2}
+  - {fileID: 11400000, guid: 977739a6be165fe45841ae4277c5c15b, type: 2}
+  - {fileID: 11400000, guid: 2d4df4ac860e00543ac6252dc63e93ee, type: 2}
   - {fileID: 11400000, guid: 2d4df4ac860e00543ac6252dc63e93ee, type: 2}
   boxAddedParts: []

@@ -5,6 +5,22 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
 
+	/* 
+	 * Based on Brackeys Audio Manager from this tutorial
+	 * https://www.youtube.com/watch?v=6OT43pvUyfY
+	 * 
+	 * First make sure each scene has an audio listener on the main camera
+	 * 
+	 * 1. Add an audio manager and make it a prefab (empty gameobject with this script attached)
+	 * 2. Duplicate the prefab to every scene and edit the master (if you want the sounds to run over several scenes - e.g. the music)
+	 * 3. Add each audio clip to the audio manager prefab
+	 * 4. Make sure to set the volume and pitch for each sound otherwise they won't work
+	 * 
+	 * When you want to play a sound : AudioManager.instance.Play("SoundNameGoesHere");
+	 * 
+	 * 
+	 */
+
 	public static AudioManager instance;
 
 	public AudioMixerGroup mixerGroup;

@@ -14,6 +14,9 @@ public class GameTimer : MonoBehaviour
     [SerializeField] Image _clockface = null;
     [SerializeField] Sprite _clockBattle = null;
     [SerializeField] Sprite _clockRepair = null;
+    [SerializeField] AudioSource _audioSource = null;
+
+    [SerializeField] BoxManager _boxManager = null;
 
 
     [SerializeField] private GameEvent _newFightRound = null;
@@ -26,6 +29,8 @@ public class GameTimer : MonoBehaviour
     }
 
     void StartNextMode(){
+        //play bell
+        AudioManager.instance.Play("bell");
         if (!isFight){
             //trigger eval
             _evalRepairs.EvaluateRepairs();
@@ -34,11 +39,14 @@ public class GameTimer : MonoBehaviour
             currentCountDown = _fightTime;
             // fire off new round event
             _newFightRound.Raise();
-            
+            _audioSource.Stop();
         }else{
             isFight = false;     
             _clockface.sprite = _clockRepair;    
-            currentCountDown = _repairTime;         
+            currentCountDown = _repairTime;
+            _audioSource.pitch = 1;
+            _audioSource.Play();
+            _boxManager.TriggerEnableBoxes();
         }
         StartCoroutine(CountdownTime());
     }
@@ -51,9 +59,17 @@ public class GameTimer : MonoBehaviour
 
             //rotate clock hand
             _clockhand.eulerAngles = new Vector3(0,0, (currentCountDown / totalCountdownTime) * 360);
+
+            //increase pitch as time runs out - after it's almost over
+            if (currentCountDown/totalCountdownTime <= .25)
+                _audioSource.pitch = Mathf.Lerp(3f,1f,currentCountDown/totalCountdownTime); 
+                
+            
             yield return null;
         }
 
         StartNextMode();
     }
+
+
 }

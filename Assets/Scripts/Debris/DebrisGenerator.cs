@@ -9,7 +9,10 @@ public class DebrisGenerator : MonoBehaviour
     [SerializeField] Animator _enemyRobot = null;
     [SerializeField] Effect _blastEffect = null;
     [SerializeField] GameTimer _gameTimer = null;
-    [SerializeField] RobotHealth _robotHealth = null;
+    //[SerializeField] RobotHealth _robotHealth = null;
+    [SerializeField] SoundRandomiser _impactPunch = null;
+    [SerializeField] AudioSource _audioSource = null;
+    [SerializeField] GameEvent _playerRobotPartDamaged = null;
 
     [SerializeField] float _initialSpawnDebris = 3f;
     [SerializeField] float _extraDebrisPerRound = 1.2f;
@@ -47,20 +50,19 @@ public class DebrisGenerator : MonoBehaviour
 
 
     private IEnumerator SpawnDebris(){    
-    
-        // player robot takes damage        
-        _robotHealth.TakeDamage(5);
-
         // enemy robot attacks
         _enemyRobot.GetComponent<Animator>().SetBool("IsAttacking", true);
         yield return new WaitForSeconds(0.2f);
         _enemyRobot.GetComponent<Animator>().SetBool("IsAttacking", false);
 
+        //trigger part damage
+        _playerRobotPartDamaged.Raise();
+
         // get player position for debris spawn
         Vector2 originPoint = _playerRobot.position;
-
-        // damage player component
-
+        
+        //play impact sound
+        _audioSource.PlayOneShot(_impactPunch.ReturnRandomSound());
 
         // play explosion effect on the player
         Instantiate(_blastEffect, originPoint, Quaternion.identity);        
