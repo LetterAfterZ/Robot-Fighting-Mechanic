@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class HealthBar : MonoBehaviour
 {
-    //based on Brackeys tutorial https://www.youtube.com/watch?time_continue=484&v=BLfNP4Sc_iA
+    // Based on Brackeys tutorial https://www.youtube.com/watch?v=BLfNP4Sc_iA
 
     [SerializeField] private Slider _slider = null;
 
